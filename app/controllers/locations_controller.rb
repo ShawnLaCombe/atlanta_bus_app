@@ -17,7 +17,7 @@ class LocationsController < ApplicationController
     @bus = fetch_buses_from_api(source_url)
     # Only keep buses nearby
     @buses.select! do |bus|
-      is_nearby?(@location.latitude,@location.longitude, bus["LATITUDE"], bus["LONGITUDE"])
+      is_nearby?(@location.latitude, @location.longitude, bus["LATITUDE"], bus["LONGITUDE"])
     end
   end
 
