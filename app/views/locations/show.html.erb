@@ -4,13 +4,12 @@
 
 <h3 class="text-muted">Your current location</h3>
 <p>
-  <strong>Street address:</strong>
-  <%= @location.street_address %>
+  <%= @location.full_street_address %>
+  <small>
+    <%= link_to fa_icon('pencil', text: "Change Locations"), edit_location_path(@location) %>
+  </small>
 </p>
 
-<p class="text-muted">
-  <%=@location.full_street_address %><small><%= link_to fa_icon('pencil', text: 'Edit'), edit_location_path(@location) %></small>
-</p>
 
 <h3>The closest buses....</h3>
 <% @buses.each do |bus| %>
@@ -22,9 +21,10 @@
 <% end %>
 
 <% if @buses.empty? %>
-  <p>
+  <p id="notice"><%= notice %></p>
     No buses are close to your location.<%= link_to 'Edit Your Location', edit_location_path(@location) %>
   </p>
+<% end %>
 
 <!-- <p>
   <strong>City:</strong>
